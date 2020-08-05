@@ -36,8 +36,43 @@ class StreamLabs
         }
     }
 
-    //
-    public function token($code, $grant_type = 'authorization_code', $refresh_token = null)
+    public function post_donate($name, $message, $identifier, $amount, $currency = 'TRY', $created_at = '')
+    {
+        $params = [
+            'name' => $name,
+            'message' => $message,
+            'identifier' => $identifier,
+            'amount' => $amount,
+            'currency' => $currency,
+            'created_at' => $created_at,
+            'skip_alert' => 'no'
+        ];
+        return $this->_response(
+            $this->_curl($this->buildApiUrl('token'), $params),
+        );
+    }
+
+    public function donations()
+    {
+        $params = [
+            'access_token' => $this->token->access_token
+        ];
+        return $this->_response(
+            $this->_curl($this->buildApiUrl('donations') . '?' . http_build_query($params))
+        );
+    }
+
+    public function user()
+    {
+        $params = [
+            'access_token' => $this->token->access_token
+        ];
+        return $this->_response(
+            $this->_curl($this->buildApiUrl('user') . '?' . http_build_query($params))
+        );
+    }
+
+    public function token($code = null, $grant_type = 'authorization_code', $refresh_token = null)
     {
         $params = [
             'grant_type' => $grant_type,

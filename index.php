@@ -26,16 +26,18 @@ $streamLabs = new StreamLabs($streamLabsConfig);
 
 if (!isset($_GET['code'])) {
 
-    $authorizeLink = $streamLabs->authorize('legacy.token donations.create donations.read');
+    $authorizeLink = $streamLabs->authorize('donations.create donations.read');
 
     echo '<a href="' . $authorizeLink . '">Log-in with StreamLabs!</a>';
 
 } else {
 
-    $token = $streamLabs->token($_GET['code']);
+    $initialToken = $streamLabs->token($_GET['code']);
 
-    print_r($streamLabs);
-    print_r($token);
-    print_r($streamLabs);
+    //$refreshToken = $streamLabs->token(null, 'refresh_token', $streamLabs->token->refresh_token);
+
+    //$user = $streamLabs->user();
+
+    $donations = $streamLabs->donations();
 
 }
