@@ -38,6 +38,10 @@ if (!isset($_GET['code'])) {
 
     //$user = $streamLabs->user();
 
+    $sendDonate = $streamLabs->post_donate('Ömer', 'Selamlarrrr!', 'kucukomerf@gmail.com', 1.01);
+
     $donations = $streamLabs->donations();
+
+    print_r($donations);
 
 }

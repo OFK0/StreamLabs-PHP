@@ -38,6 +38,7 @@ class StreamLabs
 
     public function post_donate($name, $message, $identifier, $amount, $currency = 'TRY', $created_at = '')
     {
+        $created_at = ($created_at == '' ? date('m/d/Y h:i A') : date('m/d/Y h:i A', strtotime($created_at)));
         $params = [
             'name' => $name,
             'message' => $message,
@@ -45,10 +46,12 @@ class StreamLabs
             'amount' => $amount,
             'currency' => $currency,
             'created_at' => $created_at,
-            'skip_alert' => 'no'
+            'skip_alert' => 'no',
+            'access_token' => $this->token->access_token
         ];
         return $this->_response(
-            $this->_curl($this->buildApiUrl('token'), $params),
+            $this->_curl($this->buildApiUrl('donations'), $params),
+            false
         );
     }
 
