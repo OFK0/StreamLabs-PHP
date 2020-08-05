@@ -15,8 +15,8 @@ require 'streamlabs.class.php';
  * Please fill that Streamlabs config.
 */
 $streamLabsConfig = [
-    'client_id' => 'pW5B50g2DKewbxWQqEFtTLAZpPcuZkBmNgcBGLAB', // YOUR APP CLIENT ID
-    'client_secret' => 'oLDp1oB3SoAAH2qRGd7qrBxaGmqqUe20GUeyJ90o', // YOUR APP CLIENT SECRET
+    'client_id' => '', // YOUR APP CLIENT ID
+    'client_secret' => '', // YOUR APP CLIENT SECRET
     'redirect_url' => 'http://localhost:3333/', // YOUR APP REDIRECT URL
     'app_name' => 'OFKTEST', // OPTIONAL
     'api_version' => 'v1.0'
