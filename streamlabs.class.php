@@ -36,6 +36,7 @@ class StreamLabs
         }
     }
 
+    //
     public function token($code, $grant_type = 'authorization_code', $refresh_token = null)
     {
         $params = [
